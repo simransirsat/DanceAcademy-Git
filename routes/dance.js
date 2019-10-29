@@ -1,9 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var app = express();
+// module.exports={
 
+    
+// danceRouter:(req,res)=>{
+//         connection.query("SELECT * from dancer",function(err,results,field){
 
-
+//             console.log(results);
+//         });
+//     }
+// };
+  
 router.post('/', function(request, response) {
     response.redirect('/dance');
 });
@@ -35,5 +43,5 @@ router.post('/', function(request, response) {
 router.get('/', function(req, res, next) {
   res.render('dance');
 });
-
 module.exports = router;
+

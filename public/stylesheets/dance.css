@@ -26,6 +26,7 @@ body {
     font-size: 1.25rem;
     font-weight: 300;
 }
+
 p {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -35,11 +36,21 @@ p {
     padding: 1.25rem;
 }
 
-  .pricing-header {
+.pricing-header {
     max-width: 700px;
 }
 .container{
   display: block;
+}
+.list-detail
+{
+  flex: 1 1 auto;
+}
+.updating{
+  width:92%;
+}
+.heads{
+  width:83%
 }
 
   @media (min-width: 768px) {

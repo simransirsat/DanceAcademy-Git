@@ -23,6 +23,13 @@ var connection = mysql.createConnection({
 	password : '',
 	database : 'stepup'
 });
+connection.connect(err => {
+  if (err) {
+    throw err;
+  }
+  console.log("Connected to database");
+});
+global.connection = connection;
 
 var app = express();
 
@@ -70,7 +77,7 @@ app.use(function(err, req, res, next) {
 });
 
 connection.connect(function(err) {
-  if (err) throw err;
+  // if (err) throw err;
   console.log("Connected!");
 });
 

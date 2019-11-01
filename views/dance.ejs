@@ -45,13 +45,14 @@
       <ul class="list-unstyled heads list-group d-flex flex-column flex-md-row">
         <li class="form-control">Id</li>
         <li class="form-control">Name</li>
-        <li class="form-control">DOB</li>
         <li class="form-control">Sex</li>
+        <li class="form-control">DOB</li>
         <li class="form-control">Form</li>
       </ul>
     </div>
 
     <div class="">
+<<<<<<< Updated upstream
       <ul class="list-unstyled list-group d-flex flex-column flex-md-row align-items-center">
         <li><label for="inputId" class="sr-only">Id</label>
           <input type="text" id="inputId" class="form-control" placeholder="Id" required></li>
@@ -67,23 +68,39 @@
         <li><button type="submit" id="show" class="btn btn-lg btn-block btn-outline-primary">Update</button></li>
         <li><button type="submit" id="hide" class="btn btn-lg btn-block btn-outline-primary">Delete</button></li>
       </ul>
+=======
+        <%if(dancers.length>0){%>
+          <%for(let dan of dancers){%>
+            <ul class="list-unstyled list-group d-flex flex-column flex-md-row">
+                <li class="form-control"><%= dan.Did %></li>
+                <li class="form-control"><%= dan.Dname %></li>
+                <li class="form-control"><%= dan.Sex %></li>
+                <li class="form-control"><%= new Date(dan.DOB).getFullYear() %>/<%= new Date(dan.DOB).getMonth() %>/<%= new Date(dan.DOB).getDate() %></li>
+                <li class="form-control"><%= dan.Dform %></li>
+                <li><button type="submit" id="show" class="btn btn-lg btn-block btn-outline-primary">Update</button></li>
+                <li><button type="submit" class="btn btn-lg btn-block btn-outline-primary">Delete</button></li>
+              </ul>
+            <%}%>
+        <%}%>
+>>>>>>> Stashed changes
     </div>
+    
     <div class="mb-4 updating">
         <ul class="list-unstyled list-group d-flex flex-column flex-md-row align-items-center">
-          <li><label for="inputId" class="sr-only">Id</label>
-            <input type="text" id="inputId" class="form-control" placeholder="Id" required></li>
-          <li><label for="inputName" class="sr-only">Name</label>
-            <input type="text" id="inputName" class="form-control" placeholder="Name" required></li>
-          <li><label for="inputDOB" class="sr-only">DOB</label>
-            <input type="text" id="inputDOB" class="form-control" placeholder="DOB" required></li>
-          <li><label for="inputSex" class="sr-only">Sex</label>
-            <input type="text" id="inputSex" class="form-control" placeholder="Sex" required></li>
-          <li><label for="inputForm" class="sr-only">Form</label>
-            <input type="text" id="inputForm" class="form-control" placeholder="Form" required></li>
+          <li><input type="text" id="updateId" class="form-control" placeholder="Id" required></li>
+          <li><input type="text" id="updateName" class="form-control" placeholder="Name" required></li>
+          <li><input type="text" id="updateDOB" class="form-control" placeholder="DOB" required></li>
+          <li><input type="text" id="updateSex" class="form-control" placeholder="Sex" required></li>
+          <li><input type="text" id="updateForm" class="form-control" placeholder="Form" required></li>
           <li><button type="button" class="btn btn-lg btn-block btn-outline-primary">Update</button></li>
         </ul>
       </div>
+<<<<<<< Updated upstream
 
+=======
+      
+  
+>>>>>>> Stashed changes
   <div class="py-4 card-deck mb-3 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
@@ -92,19 +109,13 @@
       <div class="card-body">
         <h1 class="card-title pricing-card-title">Details <small class="text-muted"> /New</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-    <form action="/temp" method="post">
-      <li><label for="inputId" class="sr-only">Id</label>
-        <input type="text" name="id" id="inputId" class="form-control" placeholder="Id" required></li>
-      <li></li><label for="inputName" class="sr-only">Name</label>
-        <input type="text" name="name" id="inputName" class="form-control" placeholder="Name" required></li>
-      <li><label for="inputDOB" class="sr-only">DOB</label>
-        <input type="text" name="dob" id="inputDOB" class="form-control" placeholder="DOB" required></li>
-      <li><label for="inputSex" class="sr-only">Sex</label>
-        <input type="text" name="sex" id="inputSex" class="form-control" placeholder="Sex" required></li>
-      <li><label for="inputForm" class="sr-only">Form</label>
-        <input type="text" name="dform" id="inputForm" class="form-control" placeholder="Form" required></li>
-    
-      <button type="submit" class="btn btn-lg btn-block btn-outline-primary" >Add</button>
+    <form action="/dance" method="post">
+      <li><input type="text" name="addId" class="form-control" placeholder="Id" required></li>
+      <li><input type="text" name="addName" class="form-control" placeholder="Name" required></li>
+      <li><input type="text" name="addDOB" class="form-control" placeholder="DOB" required></li>
+      <li><input type="text" name="addSex" class="form-control" placeholder="Sex" required></li>
+      <li><input type="text" name="addForm" class="form-control" placeholder="Form" required></li>
+      <button type="submit" class="add btn btn-lg btn-block btn-outline-primary" >Add</button>
     </form>
         </ul>
       </div>

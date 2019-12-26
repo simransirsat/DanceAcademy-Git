@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Courses</title>
+    <title>Dancer</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -11,90 +11,86 @@
                 crossorigin="anonymous">
 
     <link href="/stylesheets/dance.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#hide").click(function(){
+          $(".updating").hide();
+        });
+         $("#show").click(function(){
+          $(".updating").show();
+        });
+      });
+    </script>
   </head>
   <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">Step Up Dance Academy</h5>
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark" href="/studio" method="post">Studios</a>
     <a class="p-2 text-dark" href="/dance" method="post">Dancers</a>
     <a class="p-2 text-dark" href="/choreo" method="post">Choreographers</a>
     <a class="p-2 text-dark" href="/courses" method="post">Courses</a>
-    <!-- <a class="p-2 text-dark" href="#">Exams</a> -->
+    <!-- <a class="p-2 text-dark" action="/exam" method="post">Exams</a> -->
   </nav>
 </div>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Courses</h1>
-  <p class="lead">The Very Talented Students at our Studio.</p>
+  <p class="lead">The Different Options offered buy us.</p>
 </div>
 
 <div class="container">
-  <div class="card-deck mb-3 text-center">
+    <div class="">
+      <ul class="list-unstyled heads list-group d-flex flex-column flex-md-row">
+        <li class="form-control">Course Number</li>
+        <li class="form-control">Content</li>
+        <li class="form-control">Duration</li>
+        <li class="form-control">Fee</li>
+        <li class="form-control">Batch</li>
+      </ul>
+    </div>
+
+    <div class="">
+        <%if(cour.length>0){%>
+          <%for(let co of cour){%>
+            <ul class="list-unstyled list-group d-flex flex-column flex-md-row">
+                <li class="form-control"><%= co.Cno %></li>
+                <li class="form-control"><%= co.Form %></li>
+                <li class="form-control"><%= co.Duration %></li>
+                <li class="form-control"><%= co.Fees %></li>
+                <li class="form-control"><%= co.Batch %></li>
+                <li><button type="submit" onclick="window.location.href='/delchoreo/<%= co.Cno %>' " class="btn btn-lg btn-block btn-outline-primary">Delete</button></li>
+              </ul>
+            <%}%>
+        <%}%>
+    </div>
+
+      
+  
+  <div class="py-4 card-deck mb-3 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Add a new Course</h4>
+        <h4 class="my-0 font-weight-normal">Add a new Student</h4>
       </div>
       <div class="card-body">
         <h1 class="card-title pricing-card-title">Details <small class="text-muted"> /New</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li><label for="inputId" class="sr-only">Id</label>
-              <input type="text" id="inputId" class="form-control" placeholder="Id" required></li>
-          <li><label for="inputForm" class="sr-only">Form</label>
-              <input type="text" id="inputForm" class="form-control" placeholder="Form" required></li>
-          <li><label for="inputDur" class="sr-only">Duration</label>
-              <input type="text" id="inputDur" class="form-control" placeholder="Duration" required></li>
-          <li><label for="inputFees" class="sr-only">Fees</label>
-              <input type="text" id="inputFees" class="form-control" placeholder="Fees" required></li>
-          <li><label for="inputBat" class="sr-only">Btach</label>
-              <input type="text" id="inputBat" class="form-control" placeholder="Batch" required></li>
+    <form action="/courses" method="post">
+      <li><input type="text" name="addCno" class="form-control" placeholder="Course Number" required></li>
+      <li><input type="text" name="addForm" class="form-control" placeholder="Form" required></li>
+      <li><input type="text" name="addDur" class="form-control" placeholder="Duration" required></li>
+      <li><input type="text" name="addFee" class="form-control" placeholder="Fees" required></li>
+      <li><input type="text" name="addBatch" class="form-control" placeholder="Batch" required></li>
+      
+      <button type="submit" class="add btn btn-lg btn-block btn-outline-primary" >Add</button>
+    </form>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Add</button>
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Update Course Details</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">Details <small class="text-muted"> /Change</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><label for="inputId" class="sr-only">Id</label>
-              <input type="text" id="inputId" class="form-control" placeholder="Id" required></li>
-          <li><label for="inputForm" class="sr-only">Form</label>
-              <input type="text" id="inputForm" class="form-control" placeholder="Form" required></li>
-          <li><label for="inputDur" class="sr-only">Duration</label>
-              <input type="text" id="inputDur" class="form-control" placeholder="Duration" required></li>
-          <li><label for="inputFees" class="sr-only">Fees</label>
-              <input type="text" id="inputFees" class="form-control" placeholder="Fees" required></li>
-          <li><label for="inputBat" class="sr-only">Btach</label>
-              <input type="text" id="inputBat" class="form-control" placeholder="Batch" required></li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Update</button>
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Delete Course</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">Details <small class="text-muted"> /Discard</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><label for="inputId" class="sr-only">Id</label>
-              <input type="text" id="inputId" class="form-control" placeholder="Id" required></li>
-          <li><label for="inputForm" class="sr-only">Form</label>
-              <input type="text" id="inputForm" class="form-control" placeholder="Form" required></li>
-          <li><label for="inputDur" class="sr-only">Duration</label>
-              <input type="text" id="inputDur" class="form-control" placeholder="Duration" required></li>
-          <li><label for="inputFees" class="sr-only">Fees</label>
-              <input type="text" id="inputFees" class="form-control" placeholder="Fees" required></li>
-          <li><label for="inputBat" class="sr-only">Btach</label>
-              <input type="text" id="inputBat" class="form-control" placeholder="Batch" required></li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Delete</button>
       </div>
     </div>
   </div>
+    
+  
 
   <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">

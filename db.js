@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
 	password : '',
 	database : 'stepup'
 });
-console.log(connection)
+console.log(connection);
 
 
 module.exports = connection;

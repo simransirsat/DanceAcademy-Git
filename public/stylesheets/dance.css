@@ -49,8 +49,11 @@ p {
 .updating{
   width:92%;
 }
+.row{
+  margin:auto;
+}
 .heads{
-  width:83%
+  width:87%
 }
 
   @media (min-width: 768px) {

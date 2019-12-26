@@ -16,6 +16,9 @@ var choreoRouter = require('./routes/choreo');
 var studioRouter = require('./routes/studio');
 var coursesRouter = require('./routes/courses');
 var tempRouter = require('./routes/temp');
+var deldancer=require('./routes/deldancer');
+var delchoreo=require('./routes/delchoreo');
+var delcourses=require('./routes/delcourses');
 
 var connection = mysql.createConnection({
 	host     : 'localhost',
@@ -23,6 +26,13 @@ var connection = mysql.createConnection({
 	password : '',
 	database : 'stepup'
 });
+connection.connect(err => {
+  if (err) {
+    throw err;
+  }
+  console.log("Connected to database");
+});
+global.connection = connection;
 
 var app = express();
 
@@ -52,7 +62,9 @@ app.use('/choreo', choreoRouter);
 app.use('/courses', coursesRouter);
 app.use('/studio', studioRouter);
 app.use('/temp', tempRouter);
-
+app.get('/deldancer/:category',deldancer);
+app.get('/delchoreo/:category',delchoreo);
+app.get('/delcourses/:category',delcourses);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -70,8 +82,9 @@ app.use(function(err, req, res, next) {
 });
 
 connection.connect(function(err) {
-  if (err) throw err;
+  // if (err) throw err;
   console.log("Connected!");
 });
+
 
 module.exports = app;
